@@ -12,7 +12,9 @@
     "@tanstack/react-query": "^4.32.6",
     "next": "13.4.13",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^6.0.7",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.32.5",
