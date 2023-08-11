@@ -30,13 +30,28 @@ function AddNewEducationModal({
   afterOpenModal,
   closeModal,
 }: Props) {
-  const [remarkFieldCount, setRemarkFieldCount] = React.useState(1);
-  const [remarkFields, setRemarkFields] = React.useState([
+  const [course, setCourse] = React.useState<string>("");
+  const [school, setSchool] = React.useState<string>("");
+  const [remarkFieldCount, setRemarkFieldCount] = React.useState<number>(1);
+  const [remarkFields, setRemarkFields] = React.useState<
+    {
+      id: number;
+      value: string;
+    }[]
+  >([
     {
       id: 1,
       value: "",
     },
   ]);
+
+  const handleCourseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCourse(e.target.value);
+  };
+
+  const handleSchoolChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSchool(e.target.value);
+  };
 
   const handleAddRemarkField = () => {
     const newCount = remarkFieldCount + 1;
@@ -86,8 +101,17 @@ function AddNewEducationModal({
           <IoMdClose size={22} />
         </div>
         <div className="pr-8 mt-4">
-          <ModalTextInput placeholder="Course studied" />
-          <ModalTextInput $marginTop="1rem" placeholder="School attended" />
+          <ModalTextInput
+            onChange={handleCourseChange}
+            value={course}
+            placeholder="Course studied"
+          />
+          <ModalTextInput
+            onChange={handleSchoolChange}
+            value={school}
+            $marginTop="1rem"
+            placeholder="School attended"
+          />
           {remarkFieldCount > 0 &&
             remarkFields.map((field) => (
               <RowWrapper $marginTop="1rem" key={field.id}>
