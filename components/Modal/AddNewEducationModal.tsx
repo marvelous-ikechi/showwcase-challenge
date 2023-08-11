@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { RowWrapper } from "../Container/Wrapper";
 import { ModalTextInput } from "../TextInput/TextInput";
 import { FormButton } from "../Button/Button";
+import { useFetchSchools } from "../../pages/api/fetchSchools";
 
 interface Props {
   modalIsOpen: boolean;
@@ -52,6 +53,8 @@ function AddNewEducationModal({
   const handleSchoolChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSchool(e.target.value);
   };
+
+  const { data: schools, isLoading, isError } = useFetchSchools(school);
 
   const handleAddRemarkField = () => {
     const newCount = remarkFieldCount + 1;
