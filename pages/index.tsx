@@ -1,13 +1,20 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { SubmitButton } from "../components/Button/SubmitBtn";
+import { TextInput } from "../components/TextInput/TextInput";
+import { Heading } from "../components/Typography/Heading";
+import { Text } from "../components/Typography/Text";
+import { PageWrapper, SectionWrapper } from "../components/Container/Wrapper";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-1">
-      <h1 className="text-2xl text-blue-500">Hello showwcase</h1>
-    </div>
+    <PageWrapper>
+      <Heading>Hi there! Welcome to your education showcase</Heading>
+      <SectionWrapper>
+        <Text>Type your name and click &quot;Enter&quot; below to begin</Text>
+        <TextInput placeholder="Enter your name" />
+        <SubmitButton>Enter</SubmitButton>
+      </SectionWrapper>
+    </PageWrapper>
   );
 };
 
