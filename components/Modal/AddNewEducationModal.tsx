@@ -18,7 +18,11 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#modal");
-function AddNewEducation({ modalIsOpen, afterOpenModal, closeModal }: Props) {
+function AddNewEducationModal({
+  modalIsOpen,
+  afterOpenModal,
+  closeModal,
+}: Props) {
   return (
     <div id="modal">
       <Modal
@@ -43,4 +47,4 @@ function AddNewEducation({ modalIsOpen, afterOpenModal, closeModal }: Props) {
   );
 }
 
-export default AddNewEducation;
+export default AddNewEducationModal;
