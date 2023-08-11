@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^4.32.6",
+    "@types/react-modal": "^3.16.0",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
