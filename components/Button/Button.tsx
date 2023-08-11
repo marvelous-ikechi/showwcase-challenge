@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface FormButtonProps {
-  width?: string;
-  margin?: string;
+  $width?: string;
+  $margin?: string;
 }
 
 export const SubmitButton = styled.button`
@@ -47,8 +47,8 @@ export const FormButton = styled.button<FormButtonProps>`
   font-weight: 600;
   padding: 8px 9px;
   text-align: center;
-  margin: ${(props: FormButtonProps) => props.margin ?? "0"};
-  width: ${(props: FormButtonProps) => props.width ?? "100%"};
+  margin: ${(props: FormButtonProps) => props.$margin ?? "0"};
+  width: ${(props: FormButtonProps) => props.$width ?? "100%"};
   &:disabled {
     opacity: 0.3;
   }

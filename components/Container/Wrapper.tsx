@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface RowWrapperProps {
-  marginTop?: string;
+  $marginTop?: string;
 }
 
 export const PageWrapper = styled.div`
@@ -25,5 +25,5 @@ export const RowWrapper = styled.div<RowWrapperProps>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${(props) => props.marginTop || "0px"};
+  margin-top: ${(props) => props.$marginTop || "0px"};
 `;
