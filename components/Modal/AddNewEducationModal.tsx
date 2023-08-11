@@ -1,5 +1,8 @@
 import React from "react";
 import Modal from "react-modal";
+import { IoMdClose } from "react-icons/io";
+import { RowWrapper } from "../Container/Wrapper";
+import { ModalTextInput } from "../TextInput/TextInput";
 
 interface Props {
   modalIsOpen: boolean;
@@ -13,6 +16,7 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
+    width: "50%",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
   },
@@ -32,15 +36,18 @@ function AddNewEducationModal({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          {/* <input /> */}
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
+        <div className="flex w-full items-end justify-end" onClick={closeModal}>
+          <IoMdClose size={22} />
+        </div>
+        <form className="pr-8 mt-4">
+          <ModalTextInput placeholder="Course studied" />
+          <ModalTextInput marginTop="1rem" placeholder="School attended" />
+
+          <ModalTextInput marginTop="1rem" placeholder="Remark" />
+          <RowWrapper marginTop="14px">
+            <button>Add Remark</button>
+            <button>Save</button>
+          </RowWrapper>
         </form>
       </Modal>
     </div>
