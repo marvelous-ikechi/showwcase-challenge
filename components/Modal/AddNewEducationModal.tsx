@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
 import { RowWrapper } from "../Container/Wrapper";
 import { ModalTextInput } from "../TextInput/TextInput";
+import { FormButton } from "../Button/Button";
 
 interface Props {
   modalIsOpen: boolean;
@@ -45,8 +46,8 @@ function AddNewEducationModal({
 
           <ModalTextInput marginTop="1rem" placeholder="Remark" />
           <RowWrapper marginTop="14px">
-            <button>Add Remark</button>
-            <button>Save</button>
+            <FormButton>Add Remark</FormButton>
+            <FormButton margin="0 0 0 10px">Save</FormButton>
           </RowWrapper>
         </form>
       </Modal>
