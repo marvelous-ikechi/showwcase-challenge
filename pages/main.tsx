@@ -1,4 +1,5 @@
 import React from "react";
+
 import { PageWrapper, SectionWrapper } from "../components/Container/Wrapper";
 import { Text } from "../components/Typography/Text";
 import { useRouter } from "next/router";
@@ -8,6 +9,7 @@ import AddNewEducationModal from "../components/Modal/AddNewEducationModal";
 const Main: React.FC = () => {
   const router = useRouter();
   const { name } = router.query;
+  const user = name ?? "";
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const afterOpenModal = () => {};
@@ -16,9 +18,15 @@ const Main: React.FC = () => {
   };
 
   return (
-    <PageWrapper>
-      <Text>Welcome to {name}&apos;s education page</Text>
-      <GeneralButton onClick={() => setIsModalOpen((prev) => !prev)}>
+    <PageWrapper id="main">
+      <Text>
+        Welcome to {user} {"'s"} education page
+      </Text>
+      <GeneralButton
+        onClick={() => {
+          setIsModalOpen((prev) => !prev);
+        }}
+      >
         Add new Education
       </GeneralButton>
       <SectionWrapper>
