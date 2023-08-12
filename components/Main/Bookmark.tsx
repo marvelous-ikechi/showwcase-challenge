@@ -1,7 +1,7 @@
 import React from "react";
-import { StudentsData } from "../../pages/context/StudentContext";
-import { Text } from "../Typography/Text";
-import { SectionWrapper } from "../Container/Wrapper";
+import { StudentsData } from "context/StudentContext";
+import { Text } from "components/Typography/Text";
+import { SectionWrapper } from "components/Container/Wrapper";
 
 interface Props {
   studentData: StudentsData[];

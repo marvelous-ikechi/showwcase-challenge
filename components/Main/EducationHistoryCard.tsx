@@ -1,8 +1,8 @@
 import React from "react";
-import { StudentsData } from "../../pages/context/StudentContext";
-import { Text } from "../Typography/Text";
-import { SectionWrapper } from "../Container/Wrapper";
-import { dateFormatter } from "../../pages/helpers/dateFormatter";
+import { StudentsData } from "context/StudentContext";
+import { Text } from "components/Typography/Text";
+import { SectionWrapper } from "components/Container/Wrapper";
+import { dateFormatter } from "helpers/dateFormatter";
 
 interface Props {
   studentData: StudentsData[];

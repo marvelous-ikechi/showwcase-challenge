@@ -1,6 +1,6 @@
 import React from "react";
-import { ModalTextInput } from "../TextInput/TextInput";
-import { useFetchSchools } from "../../pages/api/fetchSchools";
+import { ModalTextInput } from "components/TextInput/TextInput";
+import { useFetchSchools } from "hooks/useFetchSchools";
 
 interface Props {
   onChange: (e: string) => void;
@@ -32,7 +32,7 @@ const SeachDropDown = ({ onChange }: Props) => {
         placeholder="School attended"
       />
       {schools && school.length > 0 && !closeDropdown && (
-        <div className="absolute bg-white w-full h-auto mt-1 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline overflow-y-scroll max-h-32">
+        <div className="z-50 absolute bg-white w-full h-auto mt-1 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline overflow-y-scroll max-h-32">
           {schools?.map((school: any, key: any) => (
             <div
               onClick={handleSelectChange}

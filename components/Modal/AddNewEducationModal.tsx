@@ -4,15 +4,11 @@ import { IoMdClose } from "react-icons/io";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { RowWrapper, SectionWrapper } from "../Container/Wrapper";
-import { ModalTextInput } from "../TextInput/TextInput";
-import { Text } from "../Typography/Text";
-import { FormButton } from "../Button/Button";
-import SeachDropDown from "../Dropdown/SeachDropDown";
-import {
-  StudentsData,
-  useStudentsContext,
-} from "../../pages/context/StudentContext";
+import { RowWrapper, SectionWrapper } from "components/Container/Wrapper";
+import { ModalTextInput } from "components/TextInput/TextInput";
+import { FormButton } from "components/Button/Button";
+import SeachDropDown from "components/Dropdown/SeachDropDown";
+import { StudentsData, useStudentsContext } from "context/StudentContext";
 
 interface Props {
   modalIsOpen: boolean;
@@ -163,8 +159,8 @@ function AddNewEducationModal({
                 border: "1px solid #e5e7eb",
                 borderRadius: "0.375rem",
                 width: "45%",
-                flexDirection: "row",
                 padding: "1rem",
+                marginRight: "8px",
               }}
             >
               <span>Start Date:</span>
@@ -181,6 +177,7 @@ function AddNewEducationModal({
                 width: "45%",
                 flexDirection: "row",
                 padding: "1rem",
+                marginRight: "8px",
               }}
             >
               <span>End Date:</span>
@@ -203,7 +200,7 @@ function AddNewEducationModal({
                 checked={tillPresent}
                 onChange={handleIsPresentChange}
               />
-              <span className="text-sm">Till Present</span>
+              <span className="text-sm text-center">Till Present</span>
             </SectionWrapper>
           </RowWrapper>
 
