@@ -126,6 +126,14 @@ function AddNewEducationModal({
     ]);
   };
 
+  const handleIsPresentChange = () => {
+    setTillPresent((prev) => !prev);
+    if (tillPresent) {
+      setEndDate(null);
+      return;
+    }
+  };
+
   return (
     <div id="modal">
       <Modal
@@ -193,7 +201,8 @@ function AddNewEducationModal({
               <input
                 title="Till Present"
                 type="checkbox"
-                onChange={() => setTillPresent(!tillPresent)}
+                checked={tillPresent}
+                onChange={handleIsPresentChange}
               />
               <span className="text-sm">Till Present</span>
             </SectionWrapper>
