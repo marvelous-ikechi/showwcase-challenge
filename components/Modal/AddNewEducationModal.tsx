@@ -13,6 +13,12 @@ interface Props {
   closeModal: () => void;
 }
 
+interface StudentsData {
+  course: string;
+  school: string;
+  remarks: string[];
+}
+
 const customStyles = {
   content: {
     top: "50%",
@@ -46,6 +52,7 @@ function AddNewEducationModal({
       value: "",
     },
   ]);
+  const [studentsData, setStudentsData] = React.useState<StudentsData[]>([]);
 
   const handleCourseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCourse(e.target.value);
@@ -84,6 +91,16 @@ function AddNewEducationModal({
     setRemarkFieldCount(newCount);
     const newRemarkFields = remarkFields.filter((field) => field.id !== id);
     setRemarkFields(newRemarkFields);
+  };
+
+  const handleSave = () => {
+    const data = {
+      course,
+      school,
+      remarks: remarkFields.map((field) => field.value),
+    };
+    setStudentsData([...studentsData, data]);
+    console.log(data);
   };
 
   return (
@@ -130,7 +147,9 @@ function AddNewEducationModal({
             >
               Add Remark
             </FormButton>
-            <FormButton $margin="0 0 0 10px">Save</FormButton>
+            <FormButton onClick={handleSave} $margin="0 0 0 10px">
+              Save
+            </FormButton>
           </RowWrapper>
         </div>
       </Modal>
