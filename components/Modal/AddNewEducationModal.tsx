@@ -1,8 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
-import { RowWrapper } from "../Container/Wrapper";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import { RowWrapper, SectionWrapper } from "../Container/Wrapper";
 import { ModalTextInput } from "../TextInput/TextInput";
+import { Text } from "../Typography/Text";
 import { FormButton } from "../Button/Button";
 import SeachDropDown from "../Dropdown/SeachDropDown";
 import {
@@ -37,7 +41,10 @@ function AddNewEducationModal({
 }: Props) {
   const { students, addStudentData } = useStudentsContext();
   const [course, setCourse] = React.useState<string>("");
+  const [startDate, setStartDate] = React.useState<Date | null>(new Date());
+  const [endDate, setEndDate] = React.useState<Date | null>(new Date());
   const [school, setSchool] = React.useState<string>("");
+  const [tillPresent, setTillPresent] = React.useState<boolean>(false);
   const [remarkFieldCount, setRemarkFieldCount] = React.useState<number>(1);
   const [remarkFields, setRemarkFields] = React.useState<
     {
@@ -135,6 +142,60 @@ function AddNewEducationModal({
             placeholder="Course studied"
           />
           <SeachDropDown onChange={(e) => setSchool(e)} />
+          {/* add start and end date pickers*/}
+          <RowWrapper
+            style={{
+              marginTop: "1rem",
+            }}
+          >
+            <RowWrapper
+              style={{
+                border: "1px solid #e5e7eb",
+                borderRadius: "0.375rem",
+                width: "45%",
+                flexDirection: "row",
+                padding: "1rem",
+              }}
+            >
+              <span>Start Date:</span>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </RowWrapper>
+
+            <RowWrapper
+              style={{
+                border: "1px solid #e5e7eb",
+                borderRadius: "0.375rem",
+                width: "45%",
+                flexDirection: "row",
+                padding: "1rem",
+              }}
+            >
+              <span>End Date:</span>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                disabled={tillPresent}
+              />
+            </RowWrapper>
+            <SectionWrapper
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <input
+                title="Till Present"
+                type="checkbox"
+                onChange={() => setTillPresent(!tillPresent)}
+              />
+              <span className="text-sm">Till Present</span>
+            </SectionWrapper>
+          </RowWrapper>
+
           {remarkFieldCount > 0 &&
             remarkFields.map((field) => (
               <RowWrapper $marginTop="1rem" key={field.id}>
