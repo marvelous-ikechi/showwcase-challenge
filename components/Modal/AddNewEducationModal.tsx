@@ -129,7 +129,6 @@ function AddNewEducationModal({
   const handleIsPresentChange = () => {
     setTillPresent((prev) => !prev);
     if (tillPresent) {
-      setEndDate(null);
       return;
     }
   };
