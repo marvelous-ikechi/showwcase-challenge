@@ -2,17 +2,23 @@ import React from "react";
 import { ModalTextInput } from "../TextInput/TextInput";
 import { useFetchSchools } from "../../pages/api/fetchSchools";
 
-function SeachDropDown() {
+interface Props {
+  onChange: (e: string) => void;
+}
+
+const SeachDropDown = ({ onChange }: Props) => {
   const [school, setSchool] = React.useState<string>("");
   const handleSchoolChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSchool(e.target.value);
     setCloseDropDown(false);
+    onChange(e.target.value);
   };
   const [closeDropdown, setCloseDropDown] = React.useState<boolean>(false);
 
   const handleSelectChange: React.MouseEventHandler<HTMLDivElement> = (e) => {
     setSchool(e.currentTarget.textContent || "");
     setCloseDropDown(true);
+    onChange(e.currentTarget.textContent || "");
   };
 
   const { data: schools, isLoading, isError } = useFetchSchools(school);
@@ -40,6 +46,6 @@ function SeachDropDown() {
       )}
     </div>
   );
-}
+};
 
 export default SeachDropDown;

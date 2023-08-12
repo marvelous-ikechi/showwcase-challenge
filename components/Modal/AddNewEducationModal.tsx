@@ -51,10 +51,6 @@ function AddNewEducationModal({
     setCourse(e.target.value);
   };
 
-  const handleSchoolChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSchool(e.target.value);
-  };
-
   const handleAddRemarkField = () => {
     const newCount = remarkFieldCount + 1;
 
@@ -108,7 +104,7 @@ function AddNewEducationModal({
             value={course}
             placeholder="Course studied"
           />
-          <SeachDropDown />
+          <SeachDropDown onChange={(e) => setSchool(e)} />
           {remarkFieldCount > 0 &&
             remarkFields.map((field) => (
               <RowWrapper $marginTop="1rem" key={field.id}>
