@@ -56,40 +56,43 @@ const Main: React.FC = () => {
       >
         {studentData &&
           students?.length > 0 &&
-          students?.map((student, key) => (
-            <SectionWrapper
-              key={key}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "start",
-                border: "1px solid black",
-                padding: "10px",
-                margin: "10px",
-              }}
-            >
-              <Text>
-                Graduate {student?.course} at {student?.school}
-              </Text>
-              <Text>
-                {student.startDate
-                  ? `Start date: ${dateFormatter(student?.startDate)}`
-                  : ""}
-              </Text>
-              <Text>
-                {student.tillPresent
-                  ? "Present"
-                  : `End date: ${dateFormatter(student?.endDate)}`}
-              </Text>
-              <ul>
-                {student?.remarks?.map((remark, key) => (
-                  <li className="text-white" key={key}>
-                    {remark}
-                  </li>
-                ))}
-              </ul>
-            </SectionWrapper>
-          ))}
+          students?.map((student, key) => {
+            const endDate =
+              student?.tillPresent === true
+                ? "Present"
+                : dateFormatter(student?.endDate);
+            return (
+              <SectionWrapper
+                key={key}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "start",
+                  border: "1px solid black",
+                  padding: "10px",
+                  margin: "10px",
+                }}
+              >
+                <Text>
+                  Graduate {student?.course} at {student?.school}
+                </Text>
+                <Text>
+                  {student.startDate
+                    ? `${dateFormatter(student?.startDate)}`
+                    : ""}{" "}
+                  - {endDate}
+                </Text>
+
+                <ul>
+                  {student?.remarks?.map((remark, key) => (
+                    <li className="text-white" key={key}>
+                      {remark}
+                    </li>
+                  ))}
+                </ul>
+              </SectionWrapper>
+            );
+          })}
       </SectionWrapper>
     </div>
   );
