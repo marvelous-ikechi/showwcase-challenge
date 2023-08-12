@@ -5,7 +5,7 @@ import { Text } from "../components/Typography/Text";
 import { useRouter } from "next/router";
 import { GeneralButton } from "../components/Button/Button";
 import AddNewEducationModal from "../components/Modal/AddNewEducationModal";
-import { useStudentsContext } from "./context/StudentContext";
+import { useStudentsContext } from "../context/StudentContext";
 import Bookmark from "../components/Main/Bookmark";
 import EducationHistoryCard from "../components/Main/EducationHistoryCard";
 

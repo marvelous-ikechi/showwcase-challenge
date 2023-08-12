@@ -1,5 +1,5 @@
 import React from "react";
-import { StudentsData } from "../../pages/context/StudentContext";
+import { StudentsData } from "../../context/StudentContext";
 import { Text } from "../Typography/Text";
 import { SectionWrapper } from "../Container/Wrapper";
 

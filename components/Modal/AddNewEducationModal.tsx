@@ -9,10 +9,7 @@ import { ModalTextInput } from "../TextInput/TextInput";
 import { Text } from "../Typography/Text";
 import { FormButton } from "../Button/Button";
 import SeachDropDown from "../Dropdown/SeachDropDown";
-import {
-  StudentsData,
-  useStudentsContext,
-} from "../../pages/context/StudentContext";
+import { StudentsData, useStudentsContext } from "../../context/StudentContext";
 
 interface Props {
   modalIsOpen: boolean;
