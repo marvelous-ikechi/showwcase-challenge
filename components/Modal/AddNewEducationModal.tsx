@@ -6,17 +6,15 @@ import { ModalTextInput } from "../TextInput/TextInput";
 import { FormButton } from "../Button/Button";
 import { useFetchSchools } from "../../pages/api/fetchSchools";
 import SeachDropDown from "../Dropdown/SeachDropDown";
+import {
+  StudentsData,
+  useStudentsContext,
+} from "../../pages/context/StudentContext";
 
 interface Props {
   modalIsOpen: boolean;
   afterOpenModal: () => void;
   closeModal: () => void;
-}
-
-interface StudentsData {
-  course: string;
-  school: string;
-  remarks: string[];
 }
 
 const customStyles = {
@@ -38,6 +36,7 @@ function AddNewEducationModal({
   afterOpenModal,
   closeModal,
 }: Props) {
+  const { students, addStudentData } = useStudentsContext();
   const [course, setCourse] = React.useState<string>("");
   const [school, setSchool] = React.useState<string>("");
   const [remarkFieldCount, setRemarkFieldCount] = React.useState<number>(1);
@@ -99,6 +98,7 @@ function AddNewEducationModal({
       school,
       remarks: remarkFields.map((field) => field.value),
     };
+    addStudentData(data);
     setStudentsData([...studentsData, data]);
     resetFields();
     closeModal();
