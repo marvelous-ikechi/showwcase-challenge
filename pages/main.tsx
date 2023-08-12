@@ -1,6 +1,10 @@
 import React from "react";
 
-import { PageWrapper, SectionWrapper } from "../components/Container/Wrapper";
+import {
+  PageWrapper,
+  RowWrapper,
+  SectionWrapper,
+} from "../components/Container/Wrapper";
 import { Text } from "../components/Typography/Text";
 import { useRouter } from "next/router";
 import { GeneralButton } from "../components/Button/Button";
@@ -24,14 +28,14 @@ const Main: React.FC = () => {
 
   return (
     <div
-      className={`bg-black pt-8 flex flex-1 flex-col h-screen  items-center
-        ${studentData?.length === 0 && "justify-center "}
-
+      className={`bg-black m-0 p-0 pt-8 flex flex-1 flex-col h-screen  items-center
+        ${studentData?.length === 0 && "justify-start "}
       w-screen`}
       id="main"
     >
       <Text>
-        Welcome to {user} {"'s"} education page
+        Welcome to {user}
+        {"'s"} education page
       </Text>
       <GeneralButton
         onClick={() => {
@@ -40,64 +44,114 @@ const Main: React.FC = () => {
       >
         Add new Education
       </GeneralButton>
-      <SectionWrapper>
-        <AddNewEducationModal
-          modalIsOpen={isModalOpen}
-          afterOpenModal={afterOpenModal}
-          closeModal={closeModal}
-        />
-      </SectionWrapper>
-      <SectionWrapper
+      <RowWrapper
         style={{
-          display: "flex",
-          flexDirection: "column",
+          width: "100%",
+          paddingLeft: "10px",
+          paddingRight: "20px",
           alignItems: "start",
+          marginTop: "40px",
         }}
       >
-        {studentData &&
-          students?.length > 0 &&
-          students
-            ?.slice()
-            ?.reverse()
-            ?.map((student, key) => {
-              const endDate =
-                student?.tillPresent === true
-                  ? "Present"
-                  : dateFormatter(student?.endDate);
-              return (
-                <SectionWrapper
-                  key={key}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "start",
-                    border: "1px solid white",
-                    padding: "10px",
-                    margin: "10px",
-                    width: "100%",
-                  }}
-                >
-                  <Text>
-                    Graduate {student?.course} at {student?.school}
-                  </Text>
-                  <Text>
-                    {student.startDate
-                      ? `${dateFormatter(student?.startDate)}`
-                      : ""}{" "}
-                    - {endDate}
-                  </Text>
+        {/* Bookmark menu*/}
+        <SectionWrapper>
+          <div>
+            {studentData?.length > 0 &&
+              studentData
+                ?.slice()
+                ?.reverse()
+                ?.map((student, key) => {
+                  return (
+                    <SectionWrapper
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "start",
+                      }}
+                      key={key}
+                    >
+                      <a href="#">
+                        <Text
+                          style={{
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {student.school}
+                        </Text>
+                        <Text
+                          style={{
+                            fontWeight: "lighter",
+                          }}
+                        >
+                          {student.course}
+                        </Text>
+                      </a>
+                    </SectionWrapper>
+                  );
+                })}
+          </div>
+        </SectionWrapper>
+        <SectionWrapper>
+          <SectionWrapper>
+            <AddNewEducationModal
+              modalIsOpen={isModalOpen}
+              afterOpenModal={afterOpenModal}
+              closeModal={closeModal}
+            />
+          </SectionWrapper>
+          <SectionWrapper
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+            }}
+          >
+            {studentData &&
+              students?.length > 0 &&
+              students
+                ?.slice()
+                ?.reverse()
+                ?.map((student, key) => {
+                  const endDate =
+                    student?.tillPresent === true
+                      ? "Present"
+                      : dateFormatter(student?.endDate);
+                  return (
+                    <SectionWrapper
+                      key={key}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "start",
+                        border: "1px solid white",
+                        padding: "10px",
+                        margin: "10px",
+                        width: "100%",
+                      }}
+                    >
+                      <Text>
+                        {student?.course} at {student?.school}
+                      </Text>
+                      <Text>
+                        {student.startDate
+                          ? `${dateFormatter(student?.startDate)}`
+                          : ""}{" "}
+                        - {endDate}
+                      </Text>
 
-                  <ul>
-                    {student?.remarks?.map((remark, key) => (
-                      <li className="text-white" key={key}>
-                        {remark}
-                      </li>
-                    ))}
-                  </ul>
-                </SectionWrapper>
-              );
-            })}
-      </SectionWrapper>
+                      <ul>
+                        {student?.remarks?.map((remark, key) => (
+                          <li className="text-white" key={key}>
+                            {remark}
+                          </li>
+                        ))}
+                      </ul>
+                    </SectionWrapper>
+                  );
+                })}
+          </SectionWrapper>
+        </SectionWrapper>
+      </RowWrapper>
     </div>
   );
 };
