@@ -5,6 +5,7 @@ import { RowWrapper } from "../Container/Wrapper";
 import { ModalTextInput } from "../TextInput/TextInput";
 import { FormButton } from "../Button/Button";
 import { useFetchSchools } from "../../pages/api/fetchSchools";
+import SeachDropDown from "../Dropdown/SeachDropDown";
 
 interface Props {
   modalIsOpen: boolean;
@@ -53,8 +54,6 @@ function AddNewEducationModal({
   const handleSchoolChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSchool(e.target.value);
   };
-
-  const { data: schools, isLoading, isError } = useFetchSchools(school);
 
   const handleAddRemarkField = () => {
     const newCount = remarkFieldCount + 1;
@@ -109,12 +108,7 @@ function AddNewEducationModal({
             value={course}
             placeholder="Course studied"
           />
-          <ModalTextInput
-            onChange={handleSchoolChange}
-            value={school}
-            $marginTop="1rem"
-            placeholder="School attended"
-          />
+          <SeachDropDown />
           {remarkFieldCount > 0 &&
             remarkFields.map((field) => (
               <RowWrapper $marginTop="1rem" key={field.id}>
