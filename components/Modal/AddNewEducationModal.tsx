@@ -102,6 +102,9 @@ function AddNewEducationModal({
     const data = {
       course,
       school,
+      startDate,
+      endDate,
+      tillPresent,
       remarks: remarkFields.map((field) => field.value),
     };
     addStudentData(data);
