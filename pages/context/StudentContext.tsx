@@ -3,6 +3,9 @@ import React, { createContext, useContext, useState } from "react";
 export interface StudentsData {
   course: string;
   school: string;
+  startDate: Date | null;
+  endDate: Date | null;
+  tillPresent: boolean;
   remarks: string[];
 }
 
