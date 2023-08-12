@@ -1,6 +1,6 @@
 import React from "react";
-import { ModalTextInput } from "../TextInput/TextInput";
-import { useFetchSchools } from "../../pages/api/fetchSchools";
+import { ModalTextInput } from "components/TextInput/TextInput";
+import { useFetchSchools } from "hooks/useFetchSchools";
 
 interface Props {
   onChange: (e: string) => void;
