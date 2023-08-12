@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { GeneralButton } from "../components/Button/Button";
 import AddNewEducationModal from "../components/Modal/AddNewEducationModal";
 import { useStudentsContext } from "./context/StudentContext";
+import { dateFormatter } from "./helpers/dateFormatter";
 
 const Main: React.FC = () => {
   const router = useRouter();
@@ -19,11 +20,13 @@ const Main: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  const studentData = students ?? [];
+
   return (
     <div
       className={`bg-black pt-8 flex flex-1 flex-col h-screen  items-center
-        ${students?.length === 0 && "justify-center "}
-      
+        ${studentData?.length === 0 && "justify-center "}
+
       w-screen`}
       id="main"
     >
@@ -51,30 +54,42 @@ const Main: React.FC = () => {
           alignItems: "start",
         }}
       >
-        {students?.map((student, key) => (
-          <SectionWrapper
-            key={key}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-              border: "1px solid black",
-              padding: "10px",
-              margin: "10px",
-            }}
-          >
-            <Text>
-              Graduate {student.course} at {student.school}
-            </Text>
-            <ul>
-              {student.remarks.map((remark, key) => (
-                <li className="text-white" key={key}>
-                  {remark}
-                </li>
-              ))}
-            </ul>
-          </SectionWrapper>
-        ))}
+        {studentData &&
+          students?.length > 0 &&
+          students?.map((student, key) => (
+            <SectionWrapper
+              key={key}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "start",
+                border: "1px solid black",
+                padding: "10px",
+                margin: "10px",
+              }}
+            >
+              <Text>
+                Graduate {student?.course} at {student?.school}
+              </Text>
+              <Text>
+                {student.startDate
+                  ? `Start date: ${dateFormatter(student?.startDate)}`
+                  : ""}
+              </Text>
+              <Text>
+                {student.tillPresent
+                  ? "Present"
+                  : `End date: ${dateFormatter(student?.endDate)}`}
+              </Text>
+              <ul>
+                {student?.remarks?.map((remark, key) => (
+                  <li className="text-white" key={key}>
+                    {remark}
+                  </li>
+                ))}
+              </ul>
+            </SectionWrapper>
+          ))}
       </SectionWrapper>
     </div>
   );
