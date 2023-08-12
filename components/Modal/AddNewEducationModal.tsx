@@ -4,12 +4,11 @@ import { IoMdClose } from "react-icons/io";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { RowWrapper, SectionWrapper } from "../Container/Wrapper";
-import { ModalTextInput } from "../TextInput/TextInput";
-import { Text } from "../Typography/Text";
-import { FormButton } from "../Button/Button";
-import SeachDropDown from "../Dropdown/SeachDropDown";
-import { StudentsData, useStudentsContext } from "../../context/StudentContext";
+import { RowWrapper, SectionWrapper } from "components/Container/Wrapper";
+import { ModalTextInput } from "components/TextInput/TextInput";
+import { FormButton } from "components/Button/Button";
+import SeachDropDown from "components/Dropdown/SeachDropDown";
+import { StudentsData, useStudentsContext } from "context/StudentContext";
 
 interface Props {
   modalIsOpen: boolean;

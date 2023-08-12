@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import { SubmitButton } from "../components/Button/Button";
-import { TextInput } from "../components/TextInput/TextInput";
-import { Heading } from "../components/Typography/Heading";
-import { Text } from "../components/Typography/Text";
-import { PageWrapper, SectionWrapper } from "../components/Container/Wrapper";
+import { SubmitButton } from "components/Button/Button";
+import { TextInput } from "components/TextInput/TextInput";
+import { Heading } from "components/Typography/Heading";
+import { Text } from "components/Typography/Text";
+import { PageWrapper, SectionWrapper } from "components/Container/Wrapper";
 
 const Home: NextPage = () => {
   const router = useRouter();
