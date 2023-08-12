@@ -159,7 +159,6 @@ function AddNewEducationModal({
                 border: "1px solid #e5e7eb",
                 borderRadius: "0.375rem",
                 width: "45%",
-                flexDirection: "row",
                 padding: "1rem",
                 marginRight: "8px",
               }}
