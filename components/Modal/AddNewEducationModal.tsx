@@ -4,7 +4,6 @@ import { IoMdClose } from "react-icons/io";
 import { RowWrapper } from "../Container/Wrapper";
 import { ModalTextInput } from "../TextInput/TextInput";
 import { FormButton } from "../Button/Button";
-import { useFetchSchools } from "../../pages/api/fetchSchools";
 import SeachDropDown from "../Dropdown/SeachDropDown";
 import {
   StudentsData,
@@ -145,6 +144,7 @@ function AddNewEducationModal({
                   value={field.value}
                   onChange={handleRemarkFieldChange}
                 />
+                {/* disable close remark if we have only one remark */}
                 {field.id !== 1 && (
                   <IoMdClose
                     size={22}
