@@ -48,27 +48,32 @@ const Main: React.FC = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "start",
         }}
       >
         {students?.map((student, key) => (
-          <div
+          <SectionWrapper
             key={key}
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
+              alignItems: "start",
               border: "1px solid black",
               padding: "10px",
               margin: "10px",
             }}
           >
-            <Text>{student.school}</Text>
-            <Text>{student.course}</Text>
-            {student.remarks.map((remark) => (
-              <Text key={remark}>{remark}</Text>
-            ))}
-          </div>
+            <Text>
+              Graduate {student.course} at {student.school}
+            </Text>
+            <ul>
+              {student.remarks.map((remark, key) => (
+                <li className="text-white" key={key}>
+                  {remark}
+                </li>
+              ))}
+            </ul>
+          </SectionWrapper>
         ))}
       </SectionWrapper>
     </div>
