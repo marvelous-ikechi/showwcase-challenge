@@ -58,8 +58,8 @@ const Main: React.FC = () => {
           students?.length > 0 &&
           students
             ?.slice()
-            .reverse()
-            .map((student, key) => {
+            ?.reverse()
+            ?.map((student, key) => {
               const endDate =
                 student?.tillPresent === true
                   ? "Present"
@@ -71,9 +71,10 @@ const Main: React.FC = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "start",
-                    border: "1px solid black",
+                    border: "1px solid white",
                     padding: "10px",
                     margin: "10px",
+                    width: "100%",
                   }}
                 >
                   <Text>
