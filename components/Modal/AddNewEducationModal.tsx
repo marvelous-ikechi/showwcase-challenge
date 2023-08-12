@@ -100,7 +100,21 @@ function AddNewEducationModal({
       remarks: remarkFields.map((field) => field.value),
     };
     setStudentsData([...studentsData, data]);
+    resetFields();
+    closeModal();
     console.log(data);
+  };
+
+  const resetFields = () => {
+    setCourse("");
+    setSchool("");
+    setRemarkFieldCount(1);
+    setRemarkFields([
+      {
+        id: 1,
+        value: "",
+      },
+    ]);
   };
 
   return (
@@ -147,7 +161,13 @@ function AddNewEducationModal({
             >
               Add Remark
             </FormButton>
-            <FormButton onClick={handleSave} $margin="0 0 0 10px">
+            <FormButton
+              disabled={
+                !course || !school || remarkFields.some((field) => !field.value)
+              }
+              onClick={handleSave}
+              $margin="0 0 0 10px"
+            >
               Save
             </FormButton>
           </RowWrapper>
