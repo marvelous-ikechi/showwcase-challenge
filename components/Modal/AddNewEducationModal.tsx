@@ -161,6 +161,7 @@ function AddNewEducationModal({
                 width: "45%",
                 flexDirection: "row",
                 padding: "1rem",
+                marginRight: "8px",
               }}
             >
               <span>Start Date:</span>
@@ -177,6 +178,7 @@ function AddNewEducationModal({
                 width: "45%",
                 flexDirection: "row",
                 padding: "1rem",
+                marginRight: "8px",
               }}
             >
               <span>End Date:</span>
@@ -199,7 +201,7 @@ function AddNewEducationModal({
                 checked={tillPresent}
                 onChange={handleIsPresentChange}
               />
-              <span className="text-sm">Till Present</span>
+              <span className="text-sm text-center">Till Present</span>
             </SectionWrapper>
           </RowWrapper>
 
